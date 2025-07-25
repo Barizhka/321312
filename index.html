@@ -791,14 +791,15 @@
         openBtn.addEventListener('click', () => {
             openBtn.disabled = true;
             
-            // Выбираем случайный приз (но с шансом 80% на легендарный)
+            // Выбираем случайный приз с шансом 30% на легендарный
             const random = Math.random();
             let prize;
             
-            if (random < 0.1) { // 80% шанс на легендарный
+            if (random < 0.3) { // 30% шанс на легендарный
                 const legendaryPrizes = allPrizes.filter(p => p.type === "legendary");
                 prize = legendaryPrizes[Math.floor(Math.random() * legendaryPrizes.length)];
             } else {
+                // 70% шанс на любой другой приз (включая легендарные, но с общим распределением)
                 prize = allPrizes[Math.floor(Math.random() * allPrizes.length)];
             }
             
